@@ -3,9 +3,9 @@
 // A
 
 // B
-
+export * from './BackIcon';
 // C
-
+export * from './CloseIcon';
 // D
 
 // E
@@ -31,12 +31,12 @@ export * from './MediaIcon';
 // O 
 
 // P 
-
+export * from './PlayIcon';
 // Q
 
 // R
 
 // S
-
 export * from './SearchIcon';
+export * from './SeatIcon';
 

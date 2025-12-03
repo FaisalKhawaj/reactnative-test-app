@@ -1,5 +1,6 @@
 import { fonts } from "@/hooks/useCacheResource";
 import { UpcomingMovieItemDto } from "@/services/movies/query/types";
+import { router } from "expo-router";
 import React, { memo, useMemo } from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
 import { LazyImage } from "./LazyImage";
@@ -9,6 +10,7 @@ type Props = {
 };
 
 export const UpcomingMovieItem = memo(({ item }: Props) => {
+  console.log('item',item)
   const path = item.backdrop_path || item.poster_path;
 
   const url = useMemo(() => {
@@ -19,7 +21,9 @@ export const UpcomingMovieItem = memo(({ item }: Props) => {
   if (!url) return null;
 console.log('url',url)
   return (
-    <Pressable style={styles.wrap}>
+    <Pressable onPress={()=>router.push({pathname:'/movie-detail',params:{
+      id:item.id
+    }})} style={styles.wrap}>
       <LazyImage uri={url} height={200} width={"100%"} borderRadius={10} />
 
       <Text numberOfLines={3} style={styles.title}>

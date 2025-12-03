@@ -6,10 +6,19 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 import { fonts } from '@/hooks/useCacheResource';
 import { Tabs } from 'expo-router';
 import React from 'react';
+import { Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+const TAB_BASE_HEIGHT = 60;
+
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const insets = useSafeAreaInsets(); // 👈 bottom inset for Android/iOS
 
+  const tabBarHeight =
+    Platform.OS === "ios" ? TAB_BASE_HEIGHT : TAB_BASE_HEIGHT + insets.bottom; // 👈 give it extra height
+  const tabPaddingBottom = insets.bottom > 0 ? insets.bottom * 0.6 : 6;
   return (
     <Tabs
       screenOptions={{
@@ -26,17 +35,17 @@ export default function TabLayout() {
           borderTopWidth: 0,
           borderBottomWidth: 0,
           elevation: 0,
-          height: 60,
+          height: tabBarHeight,
           backgroundColor:'#2E2739',
           borderRadius:40,
-          paddingBottom: 0,
+          paddingBottom: tabPaddingBottom, // push content above back button in android on real device
           paddingTop: 0,
         },
         tabBarItemStyle: {
-          height: "100%",
+          height: TAB_BASE_HEIGHT,
           justifyContent: "center",
           alignItems: "center",
-          paddingVertical: 3,
+
         },
         headerTitleStyle:{
           fontSize:10,
@@ -69,7 +78,7 @@ export default function TabLayout() {
         }}
       />
 
-      
+    
     </Tabs>
   );
 }

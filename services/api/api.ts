@@ -1,8 +1,8 @@
 import axios, {
-    AxiosError,
-    AxiosHeaders,
-    AxiosResponse,
-    InternalAxiosRequestConfig,
+  AxiosError,
+  AxiosHeaders,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
 } from "axios";
 import { Platform } from "react-native";
 

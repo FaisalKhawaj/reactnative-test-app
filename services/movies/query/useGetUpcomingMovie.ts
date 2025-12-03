@@ -27,6 +27,8 @@ const fetchUpcomingMovies = async ({
     return data;
   };
 
+  
+
   export function useUpcomingMovies(language = "en-US") {
     return useInfiniteQuery<UpcomingMoviesResponse>({
       queryKey: ["tmdb", "upcoming-movies", { language }],
