@@ -3,7 +3,7 @@ import axios from "axios";
 const TMDB_TIMEOUT = 10000;
 
 export const movieApi = axios.create({
-  baseURL: "https://api.themoviedb.org/3",
+  baseURL: process.env.EXPO_PUBLIC_API_URL,
   timeout: TMDB_TIMEOUT,
   headers: {
     accept: "application/json",
